@@ -26,12 +26,16 @@
   <!-- Include the CesiumJS JavaScript and CSS files -->
   <!-- <script src="https://cesium.com/downloads/cesiumjs/releases/1.90/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.90/Build/Cesium/Widgets/widgets.css" rel="stylesheet"> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.95.0/Cesium.js"
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.95.0/Cesium.js"
     integrity="sha512-Y95sidA9cDT2a8MMmD47EyCVxQRJYNhXEnvBgbsp+q0gK2k3VSMpMvs9DTct0dEjm+6Dru+d2wYllhgceEiFgw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.95.0/Widgets/widgets.min.css"
     integrity="sha512-dWztHlhNizO37Lu3hJ+wCd8/T/VTqD8PHp4ZHRpHuGvEJJ59vTD0LPXekgZiaghVYDyZvXAqTAVhuctgyyukgw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  -->
+  <script src="/static/node_modules/cesium/Build/Cesium/Cesium.js"></script>
+  <link href="/static/node_modules/cesium/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+
   <script src="/static/receiver_configurator.js"></script>
   <script src="/static/interest_areas.js"></script>
   <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
@@ -59,11 +63,11 @@
     });
 
     var viewer = new Cesium.Viewer('cesiumContainer', {
-      imageryProvider: esri,
-      // imageryProvider : new Cesium.TileMapServiceImageryProvider({
-      //   url : Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')
-      // }),
-      sceneModePicker: true,
+      // imageryProvider: esri,
+      imageryProvider : new Cesium.TileMapServiceImageryProvider({
+         url : Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')
+      }),
+      sceneModePicker: false,
       homeButton: false,
       timeline: false,
       mapProjection : new Cesium.WebMercatorProjection(),
