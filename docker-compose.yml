@@ -1,0 +1,19 @@
+services:
+  df-aggregator:
+    image: docker.io/dubrsl/df-aggregator:latest
+    restart: always
+    command: /root/df-aggregator/df-aggregator.py --debug --database=/var/lib/df-aggregator/databasename.db --ip=0.0.0.0 --port=8070
+    # group-add: keep-groups
+    init: true
+    environment:
+      - TZ=EET
+    ports:
+      - target: 8070
+        published: 8070
+        mode: host
+    volumes:
+      - var_lib_df-aggregator:/var/lib/df-aggregator
+      # - ./receivers.txt:/root/df-aggregator/receivers.txt:z
+
+volumes:
+  var_lib_df-aggregator:
