@@ -10,6 +10,13 @@ if you want, but the auto-calculation works exceptionally well.
 ## Installing:
 - Please see the [Quickstart Guide](https://github.com/ckoval7/df-aggregator/wiki/GettingStarted)
 
+### Building container
+
+```bash
+podman build --tag df-aggregator -f Containerfile .
+```
+
+
 ## Dependencies:
 - Python >= 3.6
 - [numpy](https://numpy.org/install/)
@@ -66,7 +73,7 @@ if you want, but the auto-calculation works exceptionally well.
     - Minimum samples per cluster. Default "auto"
     - A higher value can yield more accurate results, but requires more data.
 
--  --plot_intersects     
+-  --plot_intersects
     - Plots all the intersect points in a cluster.
     - Only applies when clustering is turned on.
     - This creates larger CZML files.
