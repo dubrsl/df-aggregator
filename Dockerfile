@@ -2,7 +2,7 @@ FROM quay.io/centos/centos:stream9
 
 ARG CENTOS_FRONTEND=noninteractive
 RUN dnf -y update --refresh
-RUN dnf -y --setopt=install_weak_deps=False --best install python3-pip python3-setuptools
+RUN dnf -y --setopt=install_weak_deps=False --best install python3-pip python3-setuptools npm
 
 # exist system packages
     # python3-bottle \
@@ -24,6 +24,8 @@ RUN mkdir -p /root/df-aggregator && \
 COPY requirements.txt *.py /root/df-aggregator/
 COPY static /root/df-aggregator/static
 COPY views /root/df-aggregator/views
+WORKDIR /root/df-aggregator/static
+RUN npm install cesium
 WORKDIR /root/df-aggregator
 RUN pip3 install -r requirements.txt
 
